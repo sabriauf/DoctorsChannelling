@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="lk.hemas.ayubo.activity.VisitDoctorActivity">
+
+    <TextView
+        android:id="@+id/txt_heading_visit_doctor"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/title_horizontal_margins"
+        android:layout_marginStart="@dimen/title_horizontal_margins"
+        android:layout_marginTop="16dp"
+        android:text="@string/visit_a_doctor_one"
+        android:textColor="@color/text_color_primary"
+        android:textSize="@dimen/text_secondary_size"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/txt_heading_two_visit_doctor"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/title_horizontal_margins"
+        android:text="@string/visit_a_doctor_two"
+        android:textColor="@color/text_color_primary"
+        android:textSize="@dimen/text_primary_size"
+        android:textStyle="bold"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txt_heading_visit_doctor" />
+
+    <include
+        android:id="@+id/layout_doctor_button"
+        layout="@layout/component_visit_doctor_buttons"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/button_horizontal_margins"
+        android:layout_marginStart="@dimen/button_horizontal_margins"
+        android:layout_marginTop="24dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txt_heading_two_visit_doctor" />
+
+    <include
+        android:id="@+id/layout_specialty_button"
+        layout="@layout/component_visit_doctor_buttons"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/button_horizontal_margins"
+        android:layout_marginStart="@dimen/button_horizontal_margins"
+        android:layout_marginTop="1dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/layout_doctor_button" />
+
+    <include
+        android:id="@+id/layout_location_button"
+        layout="@layout/component_visit_doctor_buttons"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/button_horizontal_margins"
+        android:layout_marginStart="@dimen/button_horizontal_margins"
+        android:layout_marginTop="1dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/layout_specialty_button" />
+
+    <include
+        android:id="@+id/layout_date_button"
+        layout="@layout/component_visit_doctor_buttons"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/button_horizontal_margins"
+        android:layout_marginStart="@dimen/button_horizontal_margins"
+        android:layout_marginTop="1dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/layout_location_button" />
+
+    <Button
+        android:id="@+id/btn_find_doctor_visit_doctor"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/button_horizontal_margins"
+        android:layout_marginStart="@dimen/button_horizontal_margins"
+        android:layout_marginTop="32dp"
+        android:textAllCaps="false"
+        android:text="@string/find_doctors"
+        android:textSize="@dimen/text_button_title"
+        android:padding="@dimen/button_padding"
+        android:textColor="@color/text_color_widget_primary"
+        android:foreground="?attr/selectableItemBackground"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/layout_date_button" />
+
+    <ImageView
+        android:id="@+id/img_e_channeling_logo_visit_doctor"
+        android:layout_width="@dimen/image_action_button"
+        android:layout_height="@dimen/image_action_button"
+        android:layout_marginBottom="@dimen/button_horizontal_margins"
+        android:layout_marginEnd="@dimen/button_horizontal_margins"
+        android:src="@drawable/echanneling_logo"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/img_doc_990_logo_visit_doctor" />
+
+    <ImageView
+        android:id="@+id/img_doc_990_logo_visit_doctor"
+        android:layout_width="@dimen/image_action_button"
+        android:layout_height="@dimen/image_action_button"
+        android:layout_marginBottom="@dimen/button_horizontal_margins"
+        android:layout_marginEnd="@dimen/button_horizontal_margins"
+        android:src="@drawable/doc_990_logo"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <TextView
+        android:id="@+id/txt_powered_visit_doctor"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/button_horizontal_margins"
+        android:text="@string/powered_by"
+        android:textColor="@color/text_color_secondary"
+        android:textSize="@dimen/text_tertiary_size"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/img_e_channeling_logo_visit_doctor"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <android.support.v4.widget.ContentLoadingProgressBar
+        android:id="@+id/progress_loading_availability"
+        style="?android:attr/progressBarStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_find_doctor_visit_doctor" />
+
+    <include
+        android:id="@+id/layout_error"
+        layout="@layout/component_error_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+</android.support.constraint.ConstraintLayout>

@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/white">
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/img_doc_details"
+        android:layout_width="@dimen/image_action_button"
+        android:layout_height="@dimen/image_action_button"
+        android:layout_marginStart="@dimen/button_horizontal_margins"
+        android:layout_marginTop="32dp"
+        android:src="@drawable/default_profile_pic"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/txt_doctor_name_details"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:text="@string/dummy_doctor"
+        android:textColor="@color/text_color_primary"
+        android:textSize="@dimen/text_tertiary_size"
+        android:textStyle="bold"
+        app:layout_constraintStart_toEndOf="@+id/img_doc_details"
+        app:layout_constraintTop_toTopOf="@+id/img_doc_details" />
+
+    <TextView
+        android:id="@+id/txt_specialty_details"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/dummy_specialty"
+        android:textColor="@color/text_color_secondary"
+        android:textSize="@dimen/text_tertiary_size"
+        app:layout_constraintStart_toStartOf="@+id/txt_doctor_name_details"
+        app:layout_constraintTop_toBottomOf="@+id/txt_doctor_name_details" />
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/recycler_session_details"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="24dp"
+        app:layout_constraintBottom_toTopOf="@+id/txt_price_details"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txt_specialty_details" />
+
+    <TextView
+        android:id="@+id/txt_confirm_details"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:padding="@dimen/button_padding"
+        android:background="@drawable/book_button_background"
+        android:text="@string/confirm_booking"
+        android:textColor="@color/text_color_widget_primary"
+        android:textSize="@dimen/text_tertiary_size"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <TextView
+        android:id="@+id/txt_price_details"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:text="@string/dummy_price"
+        android:textColor="@color/text_color_primary"
+        android:textSize="@dimen/text_primary_size"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/txt_confirm_details"
+        app:layout_constraintEnd_toEndOf="@+id/txt_confirm_details"
+        app:layout_constraintStart_toStartOf="@+id/txt_confirm_details" />
+
+</android.support.constraint.ConstraintLayout>

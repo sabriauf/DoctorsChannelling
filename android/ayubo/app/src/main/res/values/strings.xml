@@ -1,0 +1,65 @@
+<resources>
+    <string name="app_name">ayubo</string>
+    <string name="settings">Settings</string>
+
+    <!-- dummy strings -->
+    <string name="dummy_doctor">Dr. Sarath Silva</string>
+    <string name="dummy_day">4</string>
+    <string name="dummy_week">Monday, Dec 2018</string>
+    <string name="dummy_specialty">Endocrinologist</string>
+    <string name="dummy_time">6.00 AM - 6.00 PM</string>
+    <string name="dummy_location">Hemas Hospital</string>
+    <string name="dummy_price">LKR 650.00</string>
+
+    <!-- Dashboard -->
+    <string name="button_name">Button Name</string>
+    <string name="favorite">Favorites</string>
+    <string name="heading">Heading</string>
+    <string name="video_call_title">Make A Video Call</string>
+    <string name="channel_doctor_title">Channel a Doctor</string>
+    <string name="view_report_title">Review a report Online</string>
+    <string name="ask_title">Ask a question</string>
+
+    <!-- Doctor info view -->
+    <string name="video_short_title">Video</string>
+    <string name="upcoming_sessions">Upcoming Sessions</string>
+    <string name="video_consultation">Video Consultation</string>
+    <string name="request">Request</string>
+    <string name="channel">Channel</string>
+    <string name="ask">Ask</string>
+    <string name="review">Review</string>
+    <string name="action_book">Book</string>
+
+    <!-- Visit Doctor View-->
+    <string name="visit_a_doctor_one">Visit a</string>
+    <string name="visit_a_doctor_two">Doctor</string>
+    <string name="find_doctors">Find Doctors</string>
+    <string name="doctor">Doctor</string>
+    <string name="specialty">Specialty</string>
+    <string name="location">Location</string>
+    <string name="date">Date</string>
+    <string name="appointment_date">Appointment Date</string>
+    <string name="powered_by">Powered by</string>
+
+    <!-- Search -->
+    <string name="search_doctor">Search a Doctor</string>
+    <string name="search_specialty">Search a Specialty</string>
+    <string name="search_location">Search a Location</string>
+    <string name="min_3_characters">Minimum 3 Characters</string>
+    <string name="select_doctor">Select a Doctor</string>
+
+    <!-- Error messages -->
+    <string name="server_error">An Error Occurred</string>
+    <string name="try_again">Try Again</string>
+    <string name="doctor_empty">Please select a Doctor</string>
+    <string name="no_appointment">Sorry, No Appointments Available</string>
+
+    <!-- Schedule Activity -->
+    <string name="title_activity_schedule">ScheduleActivity</string>
+    <string name="calendar">Calendar</string>
+    <string name="book">Book</string>
+
+    <!-- Details view -->
+    <string name="confirm_booking">Confirm Booking</string>
+
+</resources>

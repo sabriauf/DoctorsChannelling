@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@android:color/white">
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/img_doc_schedule"
+        android:layout_width="@dimen/image_action_button"
+        android:layout_height="@dimen/image_action_button"
+        android:layout_marginStart="@dimen/button_horizontal_margins"
+        android:layout_marginTop="32dp"
+        android:src="@drawable/default_profile_pic"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/txt_doctor_name_schedule"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/button_horizontal_margins"
+        android:layout_marginTop="8dp"
+        android:text="@string/dummy_doctor"
+        android:textColor="@color/text_color_primary"
+        android:textSize="@dimen/text_tertiary_size"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/img_doc_schedule" />
+
+    <TextView
+        android:id="@+id/txt_specialty_schedule"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/button_horizontal_margins"
+        android:text="@string/dummy_specialty"
+        android:textColor="@color/text_color_secondary"
+        android:textSize="@dimen/text_tertiary_size"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txt_doctor_name_schedule" />
+
+    <TextView
+        android:id="@+id/txt_title_schedule"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/button_horizontal_margins"
+        android:layout_marginTop="24dp"
+        android:text="@string/upcoming_sessions"
+        android:textColor="@color/text_color_primary"
+        android:textSize="@dimen/text_secondary_size"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txt_specialty_schedule" />
+
+    <TextView
+        android:id="@+id/txt_location_schedule"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="@dimen/button_horizontal_margins"
+        android:text="@string/dummy_location"
+        android:textColor="@color/text_color_quaternary"
+        android:textSize="@dimen/text_secondary_size"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/btn_calendar_schedule"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txt_title_schedule" />
+
+    <Button
+        android:id="@+id/btn_calendar_schedule"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:text="@string/calendar"
+        android:textColor="@color/text_color_widget_primary"
+        app:layout_constraintBottom_toBottomOf="@+id/txt_location_schedule"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+</android.support.constraint.ConstraintLayout>
