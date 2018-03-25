@@ -11,9 +11,8 @@ import android.widget.TextView;
 import java.util.List;
 
 import lk.hemas.ayubo.R;
+import lk.hemas.ayubo.activity.DetailActivity;
 import lk.hemas.ayubo.activity.SearchActivity;
-import lk.hemas.ayubo.model.ChannelDoctor;
-import lk.hemas.ayubo.model.VisitDoctor;
 
 /**
  * Created by Sabri on 3/16/2018. Adapter for Search
@@ -24,6 +23,7 @@ public class SearchAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
     //constants
     private static final int TITLE_TYPE = 1;
     private static final int DETAIL_TYPE = 2;
+    private static final int SUMMARY_TYPE = 3;
 
     //instances
     private Activity activity;
@@ -47,6 +47,9 @@ public class SearchAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
         View view;
         if (viewType == DETAIL_TYPE) {
             view = LayoutInflater.from(activity).inflate(R.layout.component_search_row, parent, false);
+            return new DetailViewHolder(view);
+        } else if (viewType == SUMMARY_TYPE) {
+            view = LayoutInflater.from(activity).inflate(R.layout.component_summary_row, parent, false);
             return new DetailViewHolder(view);
         } else {
             view = LayoutInflater.from(activity).inflate(R.layout.component_search_title_row, parent, false);
@@ -96,6 +99,8 @@ public class SearchAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
     public int getItemViewType(int position) {
         if (values.get(position) instanceof String)
             return TITLE_TYPE;
+        else if (values.get(position) instanceof DetailActivity.DetailRow)
+            return SUMMARY_TYPE;
         else
             return DETAIL_TYPE;
     }

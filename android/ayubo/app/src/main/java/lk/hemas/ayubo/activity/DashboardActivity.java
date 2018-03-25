@@ -34,7 +34,7 @@ public class DashboardActivity extends AppCompatActivity {
         view_video.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                startActivity(new Intent(DashboardActivity.this, VideoRequestActivity.class));
             }
         });
         View view_channel = findViewById(R.id.layout_channel_doctor_button);
@@ -50,7 +50,6 @@ public class DashboardActivity extends AppCompatActivity {
         view_report.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
             }
         });
         View view_ask = findViewById(R.id.layout_ask_button);

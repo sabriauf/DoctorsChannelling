@@ -28,7 +28,9 @@
             android:name=".activity.ScheduleActivity"
             android:label="@string/title_activity_schedule"
             android:theme="@style/AppTheme" />
-        <activity android:name=".activity.DetailActivity"></activity>
+        <activity android:name=".activity.DetailActivity" />
+        <activity android:name=".activity.VideoRequestActivity"
+            android:windowSoftInputMode="stateHidden"/>
     </application>
 
 </manifest>

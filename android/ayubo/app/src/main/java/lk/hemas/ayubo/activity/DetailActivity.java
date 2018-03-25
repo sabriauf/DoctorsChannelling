@@ -149,6 +149,5 @@ public class DetailActivity extends AppCompatActivity {
             this.title = title;
             this.value = value;
         }
-
     }
 }

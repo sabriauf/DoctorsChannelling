@@ -1,0 +1,232 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="lk.hemas.ayubo.activity.DoctorActivity">
+
+    <TextView
+        android:id="@+id/txt_sub_title_request"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/text_margin"
+        android:layout_marginTop="8dp"
+        android:text="@string/request_a"
+        android:textColor="@color/text_color_primary"
+        android:textSize="@dimen/text_tertiary_size"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/txt_title_request"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/text_margin"
+        android:text="@string/visit_a_doctor_two"
+        android:textColor="@color/text_color_primary"
+        android:textSize="@dimen/text_primary_size"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txt_sub_title_request" />
+
+    <EditText
+        android:id="@+id/edt_search_doctor_request"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/text_margin"
+        android:background="@drawable/edittext_white_background"
+        android:drawableEnd="@drawable/search"
+        android:drawablePadding="10dp"
+        android:hint="@string/doctor_search"
+        android:paddingBottom="5dp"
+        android:paddingLeft="30dp"
+        android:paddingRight="30dp"
+        android:paddingTop="5dp"
+        android:textSize="@dimen/text_tertiary_size"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/txt_title_request" />
+
+    <TextView
+        android:id="@+id/txt_name_doctor_request"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
+        android:text="@string/dummy_doctor"
+        android:textColor="@color/text_color_primary"
+        android:textSize="@dimen/text_secondary_size"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txt_title_request" />
+
+    <TextView
+        android:id="@+id/txt_specialty_doctor_request"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:text="@string/dummy_specialty"
+        android:textColor="@color/text_color_secondary"
+        android:textSize="@dimen/text_tertiary_size"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txt_name_doctor_request" />
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/recycler_doctors_request"
+        android:layout_width="0dp"
+        android:layout_height="100dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txt_specialty_doctor_request" />
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/img_video_button"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginStart="64dp"
+        android:layout_marginTop="16dp"
+        android:src="@drawable/default_profile_pic"
+        app:layout_constraintEnd_toStartOf="@+id/img_channel_button"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/recycler_doctors_request" />
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/img_channel_button"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
+        android:src="@drawable/default_profile_pic"
+        app:layout_constraintEnd_toStartOf="@+id/img_review_button"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/img_video_button"
+        app:layout_constraintTop_toBottomOf="@+id/recycler_doctors_request" />
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/img_review_button"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginEnd="64dp"
+        android:layout_marginTop="16dp"
+        android:src="@drawable/default_profile_pic"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/img_channel_button"
+        app:layout_constraintTop_toBottomOf="@+id/recycler_doctors_request" />
+
+    <TextView
+        android:id="@+id/txt_message_book_request"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
+        android:text="@string/book_now"
+        android:textColor="@color/text_color_secondary"
+        android:textSize="@dimen/text_tertiary_size"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="@+id/img_review_button"
+        app:layout_constraintStart_toStartOf="@+id/img_video_button"
+        app:layout_constraintTop_toBottomOf="@+id/img_review_button" />
+
+    <TextView
+        android:id="@+id/txt_title_session_request"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/button_horizontal_margins"
+        android:layout_marginTop="8dp"
+        android:text="@string/session"
+        android:textColor="@color/text_color_primary"
+        android:textSize="@dimen/text_secondary_size"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txt_message_book_request" />
+
+    <TextView
+        android:id="@+id/txt_sub_title_session_request"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="@dimen/button_horizontal_margins"
+        android:text="@string/upcoming"
+        android:textColor="@color/text_color_primary"
+        android:textSize="@dimen/text_secondary_size"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toStartOf="@+id/btn_calendar_request"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txt_title_session_request" />
+
+    <Button
+        android:id="@+id/btn_calendar_request"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:text="@string/calendar"
+        android:textColor="@color/text_color_widget_primary"
+        app:layout_constraintBottom_toBottomOf="@+id/txt_sub_title_session_request"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/recycler_schedules_request"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txt_sub_title_session_request" />
+
+    <android.support.v4.widget.ContentLoadingProgressBar
+        android:id="@+id/progress_loading_doctors_request"
+        style="?android:attr/progressBarStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintBottom_toBottomOf="@+id/recycler_doctors_request"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/recycler_doctors_request" />
+
+    <android.support.v4.widget.ContentLoadingProgressBar
+        android:id="@+id/progress_loading_sessions_request"
+        style="?android:attr/progressBarStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/recycler_schedules_request"
+        app:layout_constraintStart_toStartOf="@+id/recycler_schedules_request"
+        app:layout_constraintTop_toTopOf="@+id/recycler_schedules_request" />
+
+    <include
+        android:id="@+id/layout_error"
+        layout="@layout/component_error_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+</android.support.constraint.ConstraintLayout>

@@ -62,4 +62,11 @@
     <!-- Details view -->
     <string name="confirm_booking">Confirm Booking</string>
 
+    <!-- video request -->
+    <string name="request_a">Request a</string>
+    <string name="doctor_search">Doctor Search</string>
+    <string name="session">Session</string>
+    <string name="upcoming">Upcoming</string>
+    <string name="book_now">Book Now</string>
+
 </resources>
