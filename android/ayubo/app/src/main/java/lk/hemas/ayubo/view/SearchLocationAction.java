@@ -16,10 +16,11 @@ import java.util.List;
 
 import lk.hemas.ayubo.R;
 import lk.hemas.ayubo.activity.SearchActivity;
+import lk.hemas.ayubo.adapter.SearchAdapter;
 import lk.hemas.ayubo.config.AppConfig;
 import lk.hemas.ayubo.model.AyuboSearchParameters;
 import lk.hemas.ayubo.model.DownloadDataBuilder;
-import lk.hemas.ayubo.model.VisitDoctor;
+import lk.hemas.ayubo.model.VisitLocation;
 import lk.hemas.ayubo.util.AppHandler;
 import lk.hemas.ayubo.util.DownloadManager;
 
@@ -42,24 +43,26 @@ public class SearchLocationAction implements SearchActivity.SearchActions, Seria
 
     @Override
     public boolean isValueConsists(Object object, String value) {
-        VisitDoctor doctor = (VisitDoctor) object;
-        return doctor.getHospitalName().toLowerCase().contains(value.toLowerCase());
+        VisitLocation location = (VisitLocation) object;
+        return location.getName().toLowerCase().contains(value.toLowerCase());
     }
 
     @Override
     public boolean onFinish(Activity activity, Object object) {
         Intent result = new Intent();
-        result.putExtra(SearchActivity.EXTRA_SEARCH_VALUE, ((VisitDoctor) object).getHospitalName());
-        result.putExtra(SearchActivity.EXTRA_SEARCH_ID, ((VisitDoctor) object).getHospitalId());
-        result.putExtra(SearchActivity.EXTRA_RESULT_OBJECT, (VisitDoctor) object);
-        activity.setResult(Activity.RESULT_OK, result);
+        if(object != null) {
+            result.putExtra(SearchActivity.EXTRA_SEARCH_VALUE, ((VisitLocation) object).getName());
+            result.putExtra(SearchActivity.EXTRA_SEARCH_ID, ((VisitLocation) object).getId());
+            result.putExtra(SearchActivity.EXTRA_RESULT_OBJECT, (VisitLocation) object);
+            activity.setResult(Activity.RESULT_OK, result);
+        }
         activity.finish();
         return true;
     }
 
     @Override
     public List<Object> readObject(JSONObject jsonObject) {
-        Type messageType = new TypeToken<List<VisitDoctor>>() {
+        Type messageType = new TypeToken<List<VisitLocation>>() {
         }.getType();
 
         try {
@@ -72,7 +75,7 @@ public class SearchLocationAction implements SearchActivity.SearchActions, Seria
 
     @Override
     public String getName(Object object) {
-        return ((VisitDoctor) object).getHospitalName();
+        return ((VisitLocation) object).getName();
     }
 
     @Override
@@ -81,9 +84,19 @@ public class SearchLocationAction implements SearchActivity.SearchActions, Seria
     }
 
     @Override
+    public String getImageUrl(Object object) {
+        return "";
+    }
+
+    @Override
     public DownloadDataBuilder getDownloadBuilder() {
         return new DownloadDataBuilder().init(AppConfig.URL_AYUBO_SOAP_REQUEST, 0, DownloadManager.POST_REQUEST).
                 setParams(AppHandler.getSoapRequestParams(AppConfig.METHOD_SOAP_LOCATION_SEARCH, params.getSearchParams())).
                 setType(AppConfig.SERVER_REQUEST_CONTENT_TYPE).setTimeout(AppConfig.SERVER_REQUEST_TIMEOUT);
+    }
+
+    @Override
+    public int getViewType() {
+        return SearchAdapter.SINGLE_TYPE;
     }
 }

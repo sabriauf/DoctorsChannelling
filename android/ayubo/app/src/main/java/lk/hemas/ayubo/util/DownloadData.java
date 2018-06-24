@@ -12,6 +12,7 @@ import org.json.JSONObject;
 import java.util.HashMap;
 
 import fr.arnaudguyon.xmltojsonlib.XmlToJson;
+import lk.hemas.ayubo.R;
 import lk.hemas.ayubo.model.DownloadDataBuilder;
 
 /**
@@ -101,11 +102,14 @@ public class DownloadData extends AsyncTask<Void, Void, String> {
             if (respond != null)
                 notifySuccess(respond.toString(), 200);
             else
-                notifyFailure("Server Error", 401);
+                notifyFailure("Server Error", 402);
 
         } catch (JSONException e) {
             e.printStackTrace();
-            notifyFailure(jsonString, 0);
+            if (jsonString.equals(context.getString(R.string.no_connection)))
+                notifyFailure(jsonString, 500);
+            else
+                notifyFailure(jsonString, 401);
         }
         return null;
     }
@@ -129,7 +133,7 @@ public class DownloadData extends AsyncTask<Void, Void, String> {
         if (response != null)
             parseJsonString(cleanResponse(response));
         else
-            notifyFailure("", 0);
+            notifyFailure("Unknown Error", 409);
     }
 
     private String cleanResponse(String rawString) {

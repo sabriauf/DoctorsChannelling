@@ -1,6 +1,7 @@
 package lk.hemas.ayubo.util;
 
 import android.content.Context;
+import android.support.v4.content.ContextCompat;
 import android.util.Log;
 
 import java.io.BufferedReader;
@@ -16,6 +17,8 @@ import java.net.URL;
 import java.net.URLEncoder;
 import java.util.HashMap;
 import java.util.Map;
+
+import lk.hemas.ayubo.R;
 
 /**
  * Created by Sabri on 3/16/2018. connection and request manager
@@ -216,7 +219,10 @@ public class DownloadManager {
         }
 
         String startDownload() {
-            return DownloadManager.getJsonResponse(url, params, requestMethod, timeout, type, headers);
+            if(AppHandler.isNetworkConnected(context) && AppHandler.isInternetAvailable())
+                return DownloadManager.getJsonResponse(url, params, requestMethod, timeout, type, headers);
+            else
+                return context.getString(R.string.no_connection);
         }
     }
 }

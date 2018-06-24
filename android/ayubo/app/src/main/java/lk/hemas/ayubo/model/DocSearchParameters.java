@@ -1,62 +1,72 @@
 package lk.hemas.ayubo.model;
 
-import java.io.Serializable;
-import java.util.HashMap;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-import lk.hemas.ayubo.config.AppConfig;
+import java.io.Serializable;
 
 /**
  * Created by Sabri on 3/16/2018. Search parameter model
  */
 
-public class DocSearchParameters implements Serializable {
+public class DocSearchParameters extends SoapBasicParams implements Serializable {
 
-    //constants
-    private static final String PARAM_SEARCH_NAME = "docName";
-    private static final String PARAM_SEARCH_DATE = "toDate";
-    private static final String PARAM_SEARCH_SPECIALTY = "speciality";
-    private static final String PARAM_SEARCH_HOSPITAL = "hospitalid";
-    private static final String PARAM_SEARCH_TOKEN = "gettoken";
-
-    //instances
-    private String docName;
+    private String doctorId;
+    private String locationId;
+    private String specializationId;
     private String date;
-    private String specialty;
-    private String hospitalId;
 
-    public void setDocName(String docName) {
-        this.docName = docName;
+//    protected DocSearchParameters(String doctorId, String locationId, String specializationId, String date) {
+//        this.doctorId = doctorId;
+//        this.locationId = locationId;
+//        this.specializationId = specializationId;
+//        this.date = date;
+//    }
+
+    public String getSearchParams() {
+        JSONObject jsonObject = new JSONObject();
+        try {
+            jsonObject.put("f", user_id);
+            jsonObject.put("d", doctorId);
+            jsonObject.put("e", locationId);
+            jsonObject.put("b", specializationId);
+            jsonObject.put("c", date);
+            jsonObject.put("a", token_key);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        return jsonObject.toString();
+    }
+
+    public String getDoctorId() {
+        return doctorId;
+    }
+
+    public void setDoctorId(String doctorId) {
+        this.doctorId = doctorId;
+    }
+
+    public String getLocationId() {
+        return locationId;
+    }
+
+    public void setLocationId(String locationId) {
+        this.locationId = locationId;
+    }
+
+    public String getSpecializationId() {
+        return specializationId;
+    }
+
+    public void setSpecializationId(String specializationId) {
+        this.specializationId = specializationId;
+    }
+
+    public String getDate() {
+        return date;
     }
 
     public void setDate(String date) {
         this.date = date;
-    }
-
-    public void setSpecialty(String specialty) {
-        this.specialty = specialty;
-    }
-
-    public void setHospitalId(String hospitalId) {
-        this.hospitalId = hospitalId;
-    }
-
-    public HashMap<String, String> getSearchParams() {
-        HashMap<String, String> params = new HashMap<>();
-
-        params.put(PARAM_SEARCH_TOKEN, AppConfig.DOC_SERVER_REQUEST_TOKEN);
-        params.put(PARAM_SEARCH_NAME, docName != null ? docName : "");
-        params.put(PARAM_SEARCH_DATE, date != null ? date : "");
-        params.put(PARAM_SEARCH_SPECIALTY, specialty != null ? specialty : "");
-        params.put(PARAM_SEARCH_HOSPITAL, hospitalId != null ? hospitalId : "");
-
-        return params;
-    }
-
-    public String getDocName() {
-        return docName;
-    }
-
-    public String getSpecialty() {
-        return specialty;
     }
 }

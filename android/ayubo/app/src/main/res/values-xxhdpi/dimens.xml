@@ -1,0 +1,23 @@
+<resources>
+	<dimen name="text_button_title">19.2sp</dimen>
+	<dimen name="image_sub_icon">48dp</dimen>
+	<dimen name="corner_radius">2.4dp</dimen>
+	<dimen name="fab_margin">12.8dp</dimen>
+	<dimen name="button_secondary_horizontal_margins">25.6dp</dimen>
+	<dimen name="edittext_padding">8dp</dimen>
+	<dimen name="title_horizontal_margins">12.8dp</dimen>
+	<dimen name="button_padding">16dp</dimen>
+	<dimen name="button_horizontal_margins">12.8dp</dimen>
+	<dimen name="image_small">19.2dp</dimen>
+	<dimen name="text_margin">12.8dp</dimen>
+	<dimen name="image_action_button">28.8dp</dimen>
+	<dimen name="image_main_icon">64dp</dimen>
+	<dimen name="app_bar_height">144dp</dimen>
+	<dimen name="card_horizontal_margins">16dp</dimen>
+	<dimen name="text_button_sub_title">14.4sp</dimen>
+	<dimen name="text_primary_size">25.6sp</dimen>
+	<dimen name="text_quinary_size">11.2sp</dimen>
+	<dimen name="text_secondary_size">19.2sp</dimen>
+	<dimen name="text_tertiary_size">16sp</dimen>
+	<dimen name="text_quaternary_size">12.8sp</dimen>
+</resources>

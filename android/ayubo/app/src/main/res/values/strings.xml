@@ -1,15 +1,18 @@
 <resources>
     <string name="app_name">ayubo</string>
     <string name="settings">Settings</string>
+    <string name="no_connection">No Internet Connection Available!</string>
+    <string name="cancel">Cancel</string>
 
     <!-- dummy strings -->
     <string name="dummy_doctor">Dr. Sarath Silva</string>
-    <string name="dummy_day">4</string>
+    <string name="dummy_day">#4</string>
     <string name="dummy_week">Monday, Dec 2018</string>
     <string name="dummy_specialty">Endocrinologist</string>
     <string name="dummy_time">6.00 AM - 6.00 PM</string>
     <string name="dummy_location">Hemas Hospital</string>
-    <string name="dummy_price">LKR 650.00</string>
+    <string name="dummy_price">LKR 0.00</string>
+    <string name="dummy_in_min">20 mins</string>
 
     <!-- Dashboard -->
     <string name="button_name">Button Name</string>
@@ -19,6 +22,13 @@
     <string name="channel_doctor_title">Channel a Doctor</string>
     <string name="view_report_title">Review a report Online</string>
     <string name="ask_title">Ask a question</string>
+    <string name="video_call_message">Select this option to book a video call with a doctor/experts</string>
+    <string name="channelling_message">Select this option to channel a doctor/experts</string>
+    <string name="review_message">Select this option to review your medical report(s) with a doctor/experts</string>
+    <string name="ask_message">Select this option to chat with a doctor/experts</string>
+    <string name="add_new">Add New</string>
+    <string name="my_bookings">My Bookings</string>
+    <string name="doctor_speciality">Doctor / Speciality</string>
 
     <!-- Doctor info view -->
     <string name="video_short_title">Video</string>
@@ -29,10 +39,15 @@
     <string name="ask">Ask</string>
     <string name="review">Review</string>
     <string name="action_book">Book</string>
+    <string name="select_hospital">Select Hospital</string>
+    <string name="added_favourite">%s Added to your favourites</string>
+    <string name="remove_favourite">%s Removed from your favourites</string>
+    <string name="failed_add_favourite">Failed to add favorite</string>
+    <string name="failed_remove_favourite">Failed to remove favorite</string>
 
     <!-- Visit Doctor View-->
     <string name="visit_a_doctor_one">Visit a</string>
-    <string name="visit_a_doctor_two">Doctor</string>
+    <string name="visit_a_doctor_two">Doctor/Expert</string>
     <string name="find_doctors">Find Doctors</string>
     <string name="doctor">Doctor</string>
     <string name="specialty">Specialty</string>
@@ -40,13 +55,19 @@
     <string name="date">Date</string>
     <string name="appointment_date">Appointment Date</string>
     <string name="powered_by">Powered by</string>
+    <string name="search">Search</string>
+    <string name="any">Any</string>
+    <string name="search_doctor_expert">Select doctor/expert here</string>
+    <string name="no_search_criteria">Please specify a search criteria</string>
 
     <!-- Search -->
-    <string name="search_doctor">Search a Doctor</string>
+    <string name="search_doctor">Search a Doctor/Expert</string>
     <string name="search_specialty">Search a Specialty</string>
     <string name="search_location">Search a Location</string>
     <string name="min_3_characters">Minimum 3 Characters</string>
+    <string name="search_here">Search here ...</string>
     <string name="select_doctor">Select a Doctor</string>
+    <string name="no_result">No search results</string>
 
     <!-- Error messages -->
     <string name="server_error">An Error Occurred</string>
@@ -58,9 +79,16 @@
     <string name="title_activity_schedule">ScheduleActivity</string>
     <string name="calendar">Calendar</string>
     <string name="book">Book</string>
+    <string name="view_more">View more</string>
+    <string name="special_note">Note : </string>
+    <string name="select_to_change_hospital">Select to change hospital</string>
+    <string name="no_schedules">No Sessions Available</string>
 
     <!-- Details view -->
     <string name="confirm_booking">Confirm Booking</string>
+    <string name="type">Type</string>
+    <string name="invalid">Error</string>
+    <string name="doctor_note">Doctor Note :</string>
 
     <!-- video request -->
     <string name="request_a">Request a</string>
@@ -68,5 +96,68 @@
     <string name="session">Session</string>
     <string name="upcoming">Upcoming</string>
     <string name="book_now">Book Now</string>
+    <string name="book_later">Book Later</string>
+    <string name="available_in">Available in</string>
+
+    <!-- date/time strings -->
+    <string name="today">Today</string>
+    <string name="select_payment">Select your Payment Method</string>
+
+    <!-- pay activity -->
+    <string name="add_to_dialog_bill">Add to Dialog bill</string>
+    <string name="online_payment">Online payment</string>
+    <string name="pay_now">Pay Now</string>
+    <string name="error_no_payment_method">Please specify a payment method</string>
+
+    <!-- Source Activity-->
+    <string name="booking_method">Select your booking method</string>
+    <string name="note_message_source">The above fee excludes taxes and booking fee</string>
+
+    <!-- User Activity-->
+    <string name="appointment_for">Patient details</string>
+    <string name="title">Title</string>
+    <string name="first_name">First name *</string>
+    <string name="last_name">Last name *</string>
+    <string name="phone">Phone *</string>
+    <string name="identification">NIC/Passport *</string>
+    <string name="email">Email</string>
+    <string name="dob">Date of birth *</string>
+    <string name="next">Next</string>
+    <string name="enter_name">Please enter the name</string>
+    <string name="enter_phone">Please enter the phone number</string>
+    <string name="invalid_phone">Please specify a valid mobile number</string>
+    <string name="enter_email">Please enter the Email</string>
+    <string name="invalid_email">Invalid Email</string>
+    <string name="enter_identification">Please enter NIC or Passport number</string>
+    <string name="invalid_identification">Invalid Identification number</string>
+    <string name="enter_title">Please enter the Title</string>
+
+    <!-- digit entry dialog activity -->
+    <string name="submit">Submit</string>
+    <string name="mobile_number">Mobile Number</string>
+    <string name="enter_sms">Please enter your verification code</string>
+    <string name="invalid_otp">Invalid OTP Pin</string>
+    <string name="resend"><u>Resend</u></string>
+
+    <!-- result activity -->
+    <string name="thank_you">Thank you</string>
+    <string name="result_message">You Have Successfully made an appointment</string>
+    <string name="ok">OK</string>
+    <string name="doctor_result">Doctor/Expert:</string>
+    <string name="date_result">Date:</string>
+    <string name="time_result">Time slot:</string>
+    <string name="appointment_result">Appointment #:</string>
+    <string name="location_result">Location:</string>
+
+    <!--upload activity-->
+    <string name="prescription">I give consent for doctors/experts to view my notes/prescriptions.</string>
+    <string name="add_notes">Add Notes</string>
+    <string name="take_snap">Take a snap</string>
+    <string name="from_device">From device</string>
+
+    <!-- history view -->
+    <string name="upcoming_appointments">Upcoming Appointments</string>
+    <string name="previous_appointment">Previous Appointments</string>
+    <string name="confirm_cancel">Are you sure you want cancel this appointment?</string>
 
 </resources>

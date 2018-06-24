@@ -46,6 +46,7 @@ public class SearchActivity extends AppCompatActivity {
     //views
     private ProgressBar progressBar;
     private View errorView;
+    private TextView txtNoResult;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,6 +54,7 @@ public class SearchActivity extends AppCompatActivity {
         setContentView(R.layout.activity_search_doctor);
 
         progressBar = findViewById(R.id.progress_loading);
+        txtNoResult = findViewById(R.id.txt_result_search);
 
         errorView = findViewById(R.id.layout_error);
         errorView.findViewById(R.id.btn_try_again_error).setOnClickListener(new View.OnClickListener() {
@@ -105,6 +107,13 @@ public class SearchActivity extends AppCompatActivity {
         }
     }
 
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        if (searchActions != null)
+            searchActions.onFinish(this, null);
+    }
+
     private void getData() {
         if (searchActions != null) {
             progressBar.setVisibility(View.VISIBLE);
@@ -119,11 +128,16 @@ public class SearchActivity extends AppCompatActivity {
                                 public void run() {
                                     final List<Object> data = readVisitDoctors(response);
 
+                                    txtNoResult.setVisibility(data != null && data.size() > 0 ? View.GONE : View.VISIBLE);
+
                                     runOnUiThread(new Runnable() {
                                         @Override
                                         public void run() {
                                             progressBar.setVisibility(View.GONE);
-                                            setRecyclerData(data);
+                                            if (data != null && data.size() == 1 && searchActions != null)
+                                                searchActions.onFinish(SearchActivity.this, data.get(0));
+                                            else
+                                                setRecyclerData(data);
                                         }
                                     });
                                 }
@@ -184,6 +198,9 @@ public class SearchActivity extends AppCompatActivity {
     }
 
     private void filterData(final String name) {
+        if (objects == null)
+            return;
+
         if (name.length() > 2)
             new Thread(new Runnable() {
                 @Override
@@ -196,6 +213,8 @@ public class SearchActivity extends AppCompatActivity {
                                 objects.add(object);
                         }
 
+                        txtNoResult.setVisibility(objects.size() > 0 ? View.GONE : View.VISIBLE);
+
                         runOnUiThread(new Runnable() {
                             @Override
                             public void run() {
@@ -207,9 +226,11 @@ public class SearchActivity extends AppCompatActivity {
                 }
             }).run();
         else if (name.length() == 2) {
+
             objects.clear();
             objects.addAll(source);
             adapter.notifyDataSetChanged();
+            txtNoResult.setVisibility(objects.size() > 0 ? View.GONE : View.VISIBLE);
         }
     }
 
@@ -227,6 +248,10 @@ public class SearchActivity extends AppCompatActivity {
 
         String getValue(Object object);
 
+        String getImageUrl(Object object);
+
         DownloadDataBuilder getDownloadBuilder();
+
+        int getViewType();
     }
 }

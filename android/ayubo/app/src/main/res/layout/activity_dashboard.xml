@@ -4,49 +4,68 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@android:color/white"
     tools:context="lk.hemas.ayubo.activity.DashboardActivity">
 
     <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-        <TextView
-            android:id="@+id/txt_heading_favorite"
-            android:layout_width="wrap_content"
+        <android.support.constraint.ConstraintLayout
+            android:id="@+id/layout_favorite"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="@dimen/title_horizontal_margins"
-            android:layout_marginStart="@dimen/title_horizontal_margins"
-            android:layout_marginTop="16dp"
-            android:text="@string/favorite"
-            android:textColor="@color/text_color_primary"
-            android:textSize="@dimen/text_primary_size"
-            android:textStyle="bold"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <android.support.v7.widget.RecyclerView
-            android:id="@+id/recycler_doctors"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="@dimen/button_horizontal_margins"
-            android:layout_marginStart="@dimen/button_horizontal_margins"
+            android:layout_marginTop="24dp"
+            android:background="@android:color/white"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/txt_heading_favorite" />
+            app:layout_constraintTop_toTopOf="parent">
 
-        <TextView
-            android:id="@+id/txt_heading_heading"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/title_horizontal_margins"
-            android:layout_marginLeft="@dimen/title_horizontal_margins"
-            android:layout_marginTop="32dp"
-            android:text="@string/heading"
-            android:textColor="@color/text_color_primary"
-            android:textSize="@dimen/text_primary_size"
-            android:textStyle="bold"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/recycler_doctors" />
+            <TextView
+                android:id="@+id/txt_heading_favorite"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/title_horizontal_margins"
+                android:layout_marginTop="8dp"
+                android:text="@string/favorite"
+                android:textColor="@color/text_color_primary"
+                android:textSize="@dimen/text_primary_size"
+                android:textStyle="bold"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <com.cooltechworks.views.shimmer.ShimmerRecyclerView
+                android:id="@+id/recycler_doctors"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                android:layout_marginEnd="@dimen/button_horizontal_margins"
+                android:layout_marginStart="@dimen/button_horizontal_margins"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/txt_heading_favorite"
+                app:shimmer_demo_angle="20"
+                app:shimmer_demo_child_count="4"
+                app:shimmer_demo_grid_child_count="4"
+                app:shimmer_demo_layout="@layout/component_dummy_doctor_image_row"
+                app:shimmer_demo_layout_manager_type="linear_horizontal"
+                app:shimmer_demo_shimmer_color="#73ffffff" />
+        </android.support.constraint.ConstraintLayout>
+
+        <!--<TextView-->
+            <!--android:id="@+id/txt_heading_heading"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_marginLeft="@dimen/title_horizontal_margins"-->
+            <!--android:layout_marginStart="@dimen/title_horizontal_margins"-->
+            <!--android:layout_marginTop="32dp"-->
+            <!--android:text="@string/heading"-->
+            <!--android:textColor="@color/text_color_primary"-->
+            <!--android:textSize="@dimen/text_primary_size"-->
+            <!--android:textStyle="bold"-->
+            <!--app:layout_constraintStart_toStartOf="parent"-->
+            <!--app:layout_constraintTop_toBottomOf="@+id/recycler_doctors" />-->
 
         <include
             android:id="@+id/layout_video_call_button"
@@ -55,10 +74,10 @@
             android:layout_height="wrap_content"
             android:layout_marginEnd="@dimen/button_horizontal_margins"
             android:layout_marginStart="@dimen/button_horizontal_margins"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="24dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/txt_heading_heading" />
+            app:layout_constraintTop_toBottomOf="@+id/layout_favorite" />
 
         <include
             android:id="@+id/layout_channel_doctor_button"
@@ -89,14 +108,55 @@
             layout="@layout/component_main_function_buttons"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
             android:layout_marginEnd="@dimen/button_horizontal_margins"
             android:layout_marginStart="@dimen/button_horizontal_margins"
             android:layout_marginTop="16dp"
-            android:layout_marginBottom="16dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/layout_report_button" />
+
+        <include
+            android:id="@+id/layout_error"
+            layout="@layout/component_error_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <!--<Spinner-->
+            <!--android:id="@+id/spn_user_dashboard"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_marginEnd="8dp"-->
+            <!--android:layout_marginRight="8dp"-->
+            <!--app:layout_constraintEnd_toEndOf="parent"-->
+            <!--app:layout_constraintTop_toTopOf="@+id/txt_heading_favorite"-->
+            <!--app:layout_goneMarginTop="16dp" />-->
+
+        <TextView
+            android:id="@+id/txt_dashboard_bookings"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
+            android:layout_marginRight="16dp"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/book_button_background"
+            android:padding="5dp"
+            android:textColor="@color/text_color_widget_primary"
+            android:text="@string/my_bookings"
+            android:textSize="@dimen/text_quinary_size"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/layout_favorite" />
 
     </android.support.constraint.ConstraintLayout>
 </ScrollView>

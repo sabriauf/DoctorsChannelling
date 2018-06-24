@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <include
+        android:id="@+id/layout_video_button"
+        app:layout_constraintEnd_toStartOf="@+id/layout_channel_button"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        layout="@layout/component_doctor_action_button"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp" />
+
+    <include
+        android:id="@+id/layout_channel_button"
+        app:layout_constraintEnd_toStartOf="@+id/layout_review_button"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/layout_video_button"
+        layout="@layout/component_doctor_action_button"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp" />
+
+    <include
+        android:id="@+id/layout_review_button"
+        app:layout_constraintEnd_toStartOf="@+id/layout_ask_button"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/layout_channel_button"
+        layout="@layout/component_doctor_action_button"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp" />
+
+    <include
+        android:id="@+id/layout_ask_button"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/layout_review_button"
+        layout="@layout/component_doctor_action_button"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp" />
+
+</android.support.constraint.ConstraintLayout>

@@ -11,19 +11,36 @@
         android:layout_height="wrap_content"
         android:foreground="?attr/selectableItemBackground">
 
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/img_search_row"
+            android:layout_width="@dimen/image_sub_icon"
+            android:layout_height="@dimen/image_sub_icon"
+            android:layout_marginBottom="8dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:src="@drawable/default_profile_pic"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
         <TextView
             android:id="@+id/txt_name_search_row"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="@dimen/title_horizontal_margins"
-            android:layout_marginStart="@dimen/title_horizontal_margins"
-            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="8dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:maxLines="2"
             android:text="@string/dummy_doctor"
+            android:textColor="@color/text_color_secondary"
             android:textSize="@dimen/text_button_title"
             android:textStyle="bold"
-            android:textColor="@color/text_color_primary"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintBottom_toTopOf="@+id/txt_sub_name_search_row"
+            app:layout_constraintEnd_toStartOf="@+id/img_favorite_search_row"
+            app:layout_constraintStart_toEndOf="@+id/img_search_row"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
@@ -31,17 +48,27 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginBottom="@dimen/title_horizontal_margins"
-            android:layout_marginEnd="@dimen/title_horizontal_margins"
-            android:layout_marginStart="@dimen/title_horizontal_margins"
-            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginRight="8dp"
+            android:maxLines="1"
             android:text="@string/dummy_specialty"
-            android:textColor="@color/text_color_secondary"
+            android:textColor="@color/text_color_primary"
             android:textSize="@dimen/text_button_sub_title"
-            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/img_favorite_search_row"
+            app:layout_constraintStart_toStartOf="@+id/txt_name_search_row" />
+
+        <ImageView
+            android:id="@+id/img_favorite_search_row"
+            android:layout_width="@dimen/image_action_button"
+            android:layout_height="@dimen/image_action_button"
+            android:layout_marginBottom="8dp"
+            android:layout_marginEnd="@dimen/title_horizontal_margins"
+            android:layout_marginRight="@dimen/title_horizontal_margins"
+            android:layout_marginTop="8dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/txt_name_search_row" />
+            app:layout_constraintTop_toTopOf="parent" />
 
     </android.support.constraint.ConstraintLayout>
 

@@ -1,6 +1,8 @@
 package lk.hemas.ayubo.model;
 
 import java.io.Serializable;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * Created by Sabri on 3/18/2018. model for Channeling doctor
@@ -8,58 +10,67 @@ import java.io.Serializable;
 
 public class ChannelDoctor implements Serializable{
 
-    private int DocId;
-    private String DocName;
-    private String Date;
-    private String Specialisation;
-    private int SpecialiseID;
-    private String Hospital;
+    private int doctor_code;
+    private String doctor_name;
+    private String doc_image;
+    private String favourite;
+    private String specialization;
+    private int specialization_id;
+    private HashMap<String, Hospital> hospitals;
 
-    public int getDocId() {
-        return DocId;
+    public int getDoctor_code() {
+        return doctor_code;
     }
 
-    public void setDocId(int docId) {
-        DocId = docId;
+    public void setDoctor_code(int doctor_code) {
+        this.doctor_code = doctor_code;
     }
 
-    public String getDocName() {
-        return DocName;
+    public String getDoctor_name() {
+        return doctor_name;
     }
 
-    public void setDocName(String docName) {
-        DocName = docName;
+    public void setDoctor_name(String doctor_name) {
+        this.doctor_name = doctor_name;
     }
 
-    public String getDate() {
-        return Date;
+    public String getDoc_image() {
+        return doc_image;
     }
 
-    public void setDate(String date) {
-        Date = date;
+    public void setDoc_image(String doc_image) {
+        this.doc_image = doc_image;
     }
 
-    public String getSpecialisation() {
-        return Specialisation;
+    public String getFavourite() {
+        return favourite;
     }
 
-    public void setSpecialisation(String specialisation) {
-        Specialisation = specialisation;
+    public void setFavourite(String favourite) {
+        this.favourite = favourite;
     }
 
-    public int getSpecialiseID() {
-        return SpecialiseID;
+    public String getSpecialization() {
+        return specialization;
     }
 
-    public void setSpecialiseID(int specialiseID) {
-        SpecialiseID = specialiseID;
+    public void setSpecialization(String specialization) {
+        this.specialization = specialization;
     }
 
-    public String getHospital() {
-        return Hospital;
+    public int getSpecialization_id() {
+        return specialization_id;
     }
 
-    public void setHospital(String hospital) {
-        Hospital = hospital;
+    public void setSpecialization_id(int specialization_id) {
+        this.specialization_id = specialization_id;
+    }
+
+    public HashMap<String, Hospital> getHospitals() {
+        return hospitals;
+    }
+
+    public void setHospitals(HashMap<String, Hospital> hospitals) {
+        this.hospitals = hospitals;
     }
 }

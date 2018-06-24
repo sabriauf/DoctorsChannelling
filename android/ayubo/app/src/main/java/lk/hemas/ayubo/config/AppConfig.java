@@ -15,16 +15,37 @@ public class AppConfig {
 
     public static final String SERVER_REQUEST_CONTENT_TYPE = "application/x-www-form-urlencoded";
     public static final int SERVER_REQUEST_TIMEOUT = 50000;
-    public static final String AMOUNT_VIEW = "LKR %.2f";
+    public static final String AMOUNT_VIEW = "LKR %,.2f";
+    public static final String LOCATION_VIDEO_ID = "b2c1e932-7155-f733-1de4-5886ec9ec7c5";
 
     private static final String DOC_BASIC_URL = "http://203.115.18.14/990.asmx";
-    private static final String AYUBO_BASIC_URL = BuildConfig.DEFAULT_URL;
+    public static final String AYUBO_BASIC_URL = BuildConfig.DEFAULT_URL;
 
     public static final String URL_DOCTOR_LIST = DOC_BASIC_URL + "/DOC990DoctorListAvailability";
     public static final String URL_SESSION_LIST = DOC_BASIC_URL + "/DOC990DoctorListChanelling";
     public static final String URL_AYUBO_SOAP_REQUEST = AYUBO_BASIC_URL + "custom/service/v4_1_custom/rest.php";
 
-    public static final String METHOD_SOAP_DOCTORS_SEARCH = "getHemasAppDocMaster";
-    public static final String METHOD_SOAP_SPECIALTY_SEARCH = "getHemasAppSpecialityMaster";
-    public static final String METHOD_SOAP_LOCATION_SEARCH = "getHemasAppDocMaster";
+    public static final String METHOD_SOAP_DOCTORS_SEARCH = "chanellingDoctor";
+    public static final String METHOD_SOAP_SPECIALTY_SEARCH = "chanellingSpecialization";
+    public static final String METHOD_SOAP_LOCATION_SEARCH = "chanellingLocation";
+    public static final String METHOD_SOAP_GET_FAVORITES = "getAllFavorites";
+    public static final String METHOD_SOAP_VIDEO_DOCTORS = "getMedicalExpertsNewExperts";
+    public static final String METHOD_SOAP_VIDEO_EXPERTS = "VideoCallSearch";
+    public static final String METHOD_SOAP_GET_SESSION = "getSessionEvents";
+    public static final String METHOD_SOAP_GET_CHANNELLING_SESSION = "chanellingSessions";
+    public static final String METHOD_SOAP_GET_CHANNELLING_SEARCH = "chanellingSearch";
+    public static final String METHOD_SOAP_GET_NEW_FAVORITES = "chanellingCachedDoctorList";
+    public static final String METHOD_SOAP_REMOVE_BOOKING = "chanellingReverseDoc990";
+    public static final String METHOD_SOAP_ADD_FAVORITE = "makeFavorite";
+    public static final String METHOD_SOAP_REMOVE_FAVORITE = "removeFavorites";
+    public static final String METHOD_SOAP_ADD_APPOINTMENT = "chanellingBooking";
+    public static final String METHOD_SOAP_DAILOG_PAY = "chanellingDialogAddtoBill";
+    public static final String METHOD_SOAP_DAILOG_PIN = "chanellingDialogPayment";
+    public static final String METHOD_SOAP_UPLOAD_IMAGE = "videoCallUploadPhotoSave";
+    public static final String METHOD_SOAP_VIDEO_APPIONTMENT = "VideoCallTentativeBooking";
+    public static final String METHOD_SOAP_GET_HISTORY = "videoCallAppointmentHistory";
+    public static final String METHOD_SOAP_CANCEL_APPOINTMENT = "videoCallCancelAppointment";
+
+    public static final String DOCTOR_IMAGE_BASIC = "resize.php?w=100&img=/datadrive/wellness_upload/upload/user_img/";
+    public static final String DOCTOR_IMAGE_DEAFULT = "default_user_picture.php";
 }

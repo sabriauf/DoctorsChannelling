@@ -1,37 +1,60 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:layout_marginLeft="@dimen/button_horizontal_margins"
+    android:layout_marginRight="@dimen/button_horizontal_margins"
+    android:layout_marginTop="0.5dp"
+    android:layout_marginBottom="3dp">
 
-    <TextView
-        android:id="@+id/txt_name_search_row"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="@dimen/title_horizontal_margins"
-        android:layout_marginStart="@dimen/title_horizontal_margins"
-        android:text="@string/dummy_doctor"
-        android:textColor="@color/text_color_primary"
-        android:textSize="@dimen/text_secondary_size"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
 
-    <TextView
-        android:id="@+id/txt_sub_name_search_row"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
-        android:layout_marginEnd="@dimen/title_horizontal_margins"
-        android:layout_marginStart="@dimen/title_horizontal_margins"
-        android:text="@string/dummy_specialty"
-        android:textColor="@color/text_color_secondary"
-        android:textSize="@dimen/text_tertiary_size"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txt_name_search_row" />
+        <TextView
+            android:id="@+id/txt_sub_name_search_row"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginRight="8dp"
+            android:layout_marginStart="8dp"
+            android:maxLines="1"
+            android:text="@string/dummy_doctor"
+            android:textColor="@color/text_color_secondary"
+            android:textSize="@dimen/text_tertiary_size"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@+id/img_search_row"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/img_search_row"
+            app:layout_constraintTop_toTopOf="@+id/img_search_row" />
 
-</android.support.constraint.ConstraintLayout>
+        <TextView
+            android:id="@+id/txt_name_search_row"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/title_horizontal_margins"
+            android:layout_marginTop="8dp"
+            android:text="@string/type"
+            android:textColor="@color/text_color_quinary"
+            android:textSize="@dimen/text_quaternary_size"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/img_search_row"
+            android:layout_width="@dimen/image_small"
+            android:layout_height="@dimen/image_small"
+            android:layout_marginBottom="8dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
+            android:src="@drawable/appointment"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/txt_name_search_row" />
+    </android.support.constraint.ConstraintLayout>
+
+</android.support.v7.widget.CardView>

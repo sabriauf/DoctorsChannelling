@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="wrap_content"
+    android:layout_width="120dp"
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
@@ -13,7 +13,8 @@
         android:layout_marginTop="16dp"
         android:src="@drawable/default_profile_pic"
         app:civ_border_color="#FF000000"
-        app:civ_border_width="2dp"
+        app:civ_border_width="0dp"
+        android:background="@drawable/grey_circle_background"
         app:layout_constraintEnd_toEndOf="@+id/txt_name_doctor_row"
         app:layout_constraintStart_toStartOf="@+id/txt_name_doctor_row"
         app:layout_constraintTop_toTopOf="parent" />
@@ -27,8 +28,9 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="8dp"
         android:text="@string/dummy_doctor"
-        android:textColor="@color/text_color_secondary"
-        android:textSize="16sp"
+        android:gravity="center"
+        android:textColor="@color/text_color_primary"
+        android:textSize="@dimen/text_quaternary_size"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

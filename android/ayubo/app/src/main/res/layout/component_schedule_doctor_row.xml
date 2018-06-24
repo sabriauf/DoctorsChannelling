@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="130dp"
+    android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_margin="10dp">
 
@@ -10,92 +10,135 @@
         android:layout_height="wrap_content"
         android:foreground="?attr/selectableItemBackground">
 
-        <android.support.v7.widget.AppCompatTextView
+        <TextView
             android:id="@+id/txt_title_schedule_row"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginEnd="8dp"
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
-            android:gravity="center"
             android:maxLines="2"
             android:text="@string/video_consultation"
             android:textColor="@color/text_color_primary"
-            android:textSize="@dimen/text_tertiary_size"
+            android:textSize="@dimen/text_quaternary_size"
             android:textStyle="bold"
-            app:autoSizeTextType="uniform"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <TextView
-            android:id="@+id/txt_date_schedule_row"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="8dp"
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/img_hospital_schedule_row"
+            android:layout_width="@dimen/image_main_icon"
+            android:layout_height="@dimen/image_main_icon"
+            android:layout_marginLeft="8dp"
             android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
-            android:gravity="center"
-            android:maxLines="1"
-            android:text="@string/dummy_day"
-            android:textColor="@color/text_color_primary"
-            android:textSize="@dimen/text_primary_size"
-            android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginTop="16dp"
+            android:src="@drawable/default_profile_pic"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/txt_title_schedule_row" />
 
         <TextView
-            android:id="@+id/txt_week_schedule_row"
-            android:layout_width="0dp"
+            android:id="@+id/txt_token_schedule_row"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="8dp"
-            android:layout_marginStart="8dp"
+            android:layout_marginBottom="8dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginRight="16dp"
             android:layout_marginTop="8dp"
-            android:gravity="center"
+            android:maxLines="1"
+            android:text="@string/dummy_day"
+            android:textColor="@color/text_color_secondary"
+            android:textSize="@dimen/text_primary_size"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@+id/img_hospital_schedule_row"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/img_hospital_schedule_row" />
+
+        <TextView
+            android:id="@+id/txt_date_schedule_row"
+            android:layout_width="0dp"
+            android:layout_height="32dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
             android:maxLines="2"
             android:text="@string/dummy_week"
             android:textColor="@color/text_color_primary"
             android:textSize="@dimen/text_secondary_size"
             android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/txt_date_schedule_row" />
+            app:layout_constraintEnd_toStartOf="@+id/txt_token_schedule_row"
+            app:layout_constraintStart_toEndOf="@+id/img_hospital_schedule_row"
+            app:layout_constraintTop_toTopOf="@+id/img_hospital_schedule_row" />
 
         <TextView
             android:id="@+id/txt_time_schedule_row"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="8dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
-            android:gravity="center"
             android:maxLines="1"
             android:text="@string/dummy_time"
-            android:textColor="@color/text_color_primary"
-            android:textSize="@dimen/text_tertiary_size"
+            android:textColor="@color/text_color_quinary"
+            android:textSize="@dimen/text_quaternary_size"
             android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/txt_week_schedule_row" />
+            app:layout_constraintEnd_toEndOf="@+id/txt_date_schedule_row"
+            app:layout_constraintStart_toStartOf="@+id/txt_date_schedule_row"
+            app:layout_constraintTop_toBottomOf="@+id/txt_date_schedule_row" />
 
         <TextView
-            android:id="@+id/txt_action_schedule_row"
+            android:id="@+id/txt_price_schedule_row"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:background="@android:color/holo_blue_dark"
+            android:maxLines="1"
+            android:text="@string/dummy_price"
+            android:textColor="@color/colorPrimary"
+            android:textSize="@dimen/text_quaternary_size"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="@+id/txt_date_schedule_row"
+            app:layout_constraintStart_toStartOf="@+id/txt_date_schedule_row"
+            app:layout_constraintTop_toBottomOf="@+id/txt_time_schedule_row" />
+
+        <TextView
+            android:id="@+id/txt_action_book_schedule_row"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:background="@color/colorPrimaryDark"
             android:gravity="center"
             android:maxLines="1"
-            android:padding="5dp"
-            android:text="@string/request"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp"
+            android:text="@string/book"
             android:textColor="@color/text_color_widget_primary"
-            android:textSize="@dimen/text_tertiary_size"
+            android:textSize="@dimen/text_quaternary_size"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/txt_action_more_schedule_row"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/img_hospital_schedule_row" />
+
+        <TextView
+            android:id="@+id/txt_action_more_schedule_row"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="1dp"
+            android:layout_marginStart="1dp"
+            android:layout_marginTop="16dp"
+            android:background="@color/colorPrimary"
+            android:gravity="center"
+            android:maxLines="1"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp"
+            android:text="@string/view_more"
+            android:textColor="@color/text_color_widget_primary"
+            android:textSize="@dimen/text_quaternary_size"
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/txt_time_schedule_row" />
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/txt_action_book_schedule_row"
+            app:layout_constraintTop_toBottomOf="@+id/img_hospital_schedule_row" />
 
     </android.support.constraint.ConstraintLayout>
 </android.support.v7.widget.CardView>

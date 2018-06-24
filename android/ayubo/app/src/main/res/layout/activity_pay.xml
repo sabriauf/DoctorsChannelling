@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:animateLayoutChanges="true"
+    tools:context=".activity.PayActivity">
+
+    <TextView
+        android:id="@+id/txt_title_payment"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="16dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="32dp"
+        android:text="@string/select_payment"
+        android:textColor="@color/text_color_primary"
+        android:textSize="@dimen/text_tertiary_size"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <include
+        android:id="@+id/layout_dialog_payment"
+        layout="@layout/component_payment_method_row"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/button_horizontal_margins"
+        android:layout_marginLeft="@dimen/button_horizontal_margins"
+        android:layout_marginRight="@dimen/button_horizontal_margins"
+        android:layout_marginStart="@dimen/button_horizontal_margins"
+        android:layout_marginTop="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txt_title_payment" />
+
+    <include
+        android:id="@+id/layout_card_payment"
+        layout="@layout/component_payment_method_row"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/button_horizontal_margins"
+        android:layout_marginLeft="@dimen/button_horizontal_margins"
+        android:layout_marginRight="@dimen/button_horizontal_margins"
+        android:layout_marginStart="@dimen/button_horizontal_margins"
+        android:layout_marginTop="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/layout_dialog_payment" />
+
+    <TextView
+        android:id="@+id/txt_proceed_pay"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/button_horizontal_margins"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/book_button_background"
+        android:paddingBottom="@dimen/edittext_padding"
+        android:paddingLeft="@dimen/button_padding"
+        android:paddingRight="@dimen/button_padding"
+        android:paddingTop="@dimen/edittext_padding"
+        android:text="@string/pay_now"
+        android:textColor="@color/text_color_widget_primary"
+        android:textSize="@dimen/text_quaternary_size"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txt_price_proceed" />
+
+    <TextView
+        android:id="@+id/txt_price_proceed"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginTop="16dp"
+        android:text="@string/dummy_price"
+        android:textColor="@color/text_color_primary"
+        android:textSize="@dimen/text_tertiary_size"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="@+id/txt_proceed_pay"
+        app:layout_constraintTop_toBottomOf="@+id/edt_proceed_number" />
+
+    <TextView
+        android:id="@+id/txt_proceed_mobile"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="@string/mobile_number"
+        android:textColor="@color/text_color_primary"
+        android:textSize="@dimen/text_quaternary_size"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@+id/layout_card_payment"
+        app:layout_constraintTop_toBottomOf="@+id/layout_card_payment" />
+
+    <EditText
+        android:id="@+id/edt_proceed_number"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:padding="10dp"
+        android:inputType="phone"
+        android:background="@drawable/edittext_background"
+        app:layout_constraintEnd_toEndOf="@+id/layout_card_payment"
+        app:layout_constraintStart_toStartOf="@+id/txt_proceed_mobile"
+        app:layout_constraintTop_toBottomOf="@+id/txt_proceed_mobile" />
+
+</android.support.constraint.ConstraintLayout>

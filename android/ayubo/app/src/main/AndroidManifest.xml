@@ -3,6 +3,10 @@
     package="lk.hemas.ayubo">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
     <application
         android:name=".config.AyuboApplication"
@@ -12,25 +16,74 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".activity.DashboardActivity">
+        <provider
+            android:name="android.support.v4.content.FileProvider"
+            android:authorities="com.example.android.fileprovider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/file_paths" />
+        </provider>
+
+        <activity
+            android:name=".activity.DashboardActivity"
+            android:configChanges="orientation|keyboardHidden|screenLayout|screenSize">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".activity.DoctorActivity" />
-        <activity android:name=".activity.VisitDoctorActivity" />
+        <activity
+            android:name=".activity.DoctorActivity"
+            android:configChanges="orientation|keyboardHidden|screenLayout|screenSize" />
+        <activity
+            android:name=".activity.VisitDoctorActivity"
+            android:configChanges="orientation|keyboardHidden|screenLayout|screenSize" />
         <activity
             android:name=".activity.SearchActivity"
+            android:configChanges="orientation|keyboardHidden|screenLayout|screenSize"
             android:windowSoftInputMode="stateHidden" />
         <activity
             android:name=".activity.ScheduleActivity"
+            android:configChanges="orientation|keyboardHidden|screenLayout|screenSize"
             android:label="@string/title_activity_schedule"
             android:theme="@style/AppTheme" />
-        <activity android:name=".activity.DetailActivity" />
-        <activity android:name=".activity.VideoRequestActivity"
-            android:windowSoftInputMode="stateHidden"/>
+        <activity
+            android:name=".activity.DetailActivity"
+            android:configChanges="orientation|keyboardHidden|screenLayout|screenSize" />
+        <activity
+            android:name=".activity.VideoRequestActivity"
+            android:configChanges="orientation|keyboardHidden|screenLayout|screenSize"
+            android:windowSoftInputMode="stateHidden|adjustPan" />
+        <activity
+            android:name=".activity.PayActivity"
+            android:configChanges="orientation|keyboardHidden|screenLayout|screenSize" />
+        <activity
+            android:name=".activity.SourceActivity"
+            android:configChanges="orientation|keyboardHidden|screenLayout|screenSize" />
+        <activity
+            android:name=".activity.UserDetailsActivity"
+            android:configChanges="orientation|keyboardHidden|screenLayout|screenSize"
+            android:windowSoftInputMode="stateAlwaysHidden|adjustResize" />
+        <activity
+            android:name=".activity.CustomDigitEntryDialogActivity"
+            android:configChanges="orientation|screenLayout|screenSize"
+            android:theme="@style/AppDialogTheme" />
+        <activity
+            android:name=".activity.ResultActivity"
+            android:configChanges="orientation|keyboardHidden|screenLayout|screenSize" />
+        <activity
+            android:name=".activity.UploadActivity"
+            android:configChanges="orientation|keyboardHidden|screenLayout|screenSize"
+            android:windowSoftInputMode="stateAlwaysHidden|adjustPan" />
+        <activity
+            android:name=".activity.BookLaterActivity"
+            android:configChanges="orientation|keyboardHidden|screenLayout|screenSize" />
+        <activity
+            android:name=".activity.HistoryActivity"
+            android:configChanges="orientation|keyboardHidden|screenLayout|screenSize" />
     </application>
 
 </manifest>

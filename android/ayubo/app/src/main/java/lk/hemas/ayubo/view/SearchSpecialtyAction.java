@@ -16,6 +16,7 @@ import java.util.List;
 
 import lk.hemas.ayubo.R;
 import lk.hemas.ayubo.activity.SearchActivity;
+import lk.hemas.ayubo.adapter.SearchAdapter;
 import lk.hemas.ayubo.config.AppConfig;
 import lk.hemas.ayubo.model.AyuboSearchParameters;
 import lk.hemas.ayubo.model.DownloadDataBuilder;
@@ -43,16 +44,18 @@ public class SearchSpecialtyAction implements SearchActivity.SearchActions, Seri
     @Override
     public boolean isValueConsists(Object object, String value) {
         Specialization specialization = (Specialization) object;
-        return specialization.getSpecialisation().toLowerCase().contains(value.toLowerCase());
+        return specialization.getName().toLowerCase().contains(value.toLowerCase());
     }
 
     @Override
     public boolean onFinish(Activity activity, Object object) {
         Intent result = new Intent();
-        result.putExtra(SearchActivity.EXTRA_SEARCH_VALUE, ((Specialization) object).getSpecialisation());
-        result.putExtra(SearchActivity.EXTRA_SEARCH_ID, ((Specialization) object).getSpecialiseId());
-        result.putExtra(SearchActivity.EXTRA_RESULT_OBJECT, (Specialization) object);
-        activity.setResult(Activity.RESULT_OK, result);
+        if (object != null) {
+            result.putExtra(SearchActivity.EXTRA_SEARCH_VALUE, ((Specialization) object).getName());
+            result.putExtra(SearchActivity.EXTRA_SEARCH_ID, ((Specialization) object).getId());
+            result.putExtra(SearchActivity.EXTRA_RESULT_OBJECT, (Specialization) object);
+            activity.setResult(Activity.RESULT_OK, result);
+        }
         activity.finish();
         return true;
     }
@@ -72,7 +75,7 @@ public class SearchSpecialtyAction implements SearchActivity.SearchActions, Seri
 
     @Override
     public String getName(Object object) {
-        return ((Specialization) object).getSpecialisation();
+        return ((Specialization) object).getName();
     }
 
     @Override
@@ -81,9 +84,19 @@ public class SearchSpecialtyAction implements SearchActivity.SearchActions, Seri
     }
 
     @Override
+    public String getImageUrl(Object object) {
+        return "";
+    }
+
+    @Override
     public DownloadDataBuilder getDownloadBuilder() {
         return new DownloadDataBuilder().init(AppConfig.URL_AYUBO_SOAP_REQUEST, 0, DownloadManager.POST_REQUEST).
                 setParams(AppHandler.getSoapRequestParams(AppConfig.METHOD_SOAP_SPECIALTY_SEARCH, params.getSearchParams())).
                 setType(AppConfig.SERVER_REQUEST_CONTENT_TYPE).setTimeout(AppConfig.SERVER_REQUEST_TIMEOUT);
+    }
+
+    @Override
+    public int getViewType() {
+        return SearchAdapter.SINGLE_TYPE;
     }
 }

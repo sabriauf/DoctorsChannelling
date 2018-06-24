@@ -2,6 +2,7 @@ package lk.hemas.ayubo.adapter;
 
 import android.app.Activity;
 import android.support.annotation.NonNull;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,21 +15,31 @@ import java.util.List;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 import lk.hemas.ayubo.R;
+import lk.hemas.ayubo.config.AppConfig;
 import lk.hemas.ayubo.model.Doctor;
+import lk.hemas.ayubo.model.Expert;
 
 /**
  * Created by Sabri on 3/12/2018. Doctors image adapter
  */
 
-public class DoctorsAdapter extends RecyclerView.Adapter<DoctorsAdapter.ViewHolder> {
+public class DoctorsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
+    //constants
+    private static final int VIEW_TYPE_EXPERT = 1;
+    private static final int VIEW_TYPE_DOCTOR = 2;
+
+    //instances
     private Activity activity;
-    private List<Doctor> doctors;
+    private List<Expert> expertList;
+    private List<Object> objectList;
     private OnDoctorClickListener listener;
 
-    public DoctorsAdapter(Activity activity, List<Doctor> doctors) {
+
+    public DoctorsAdapter(Activity activity, List<Expert> experts, List<Object> objects) {
         this.activity = activity;
-        this.doctors = doctors;
+        this.expertList = experts;
+        this.objectList = objects;
     }
 
     public void setOnDoctorClickListener(OnDoctorClickListener listener) {
@@ -37,46 +48,105 @@ public class DoctorsAdapter extends RecyclerView.Adapter<DoctorsAdapter.ViewHold
 
     @NonNull
     @Override
-    public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(activity).inflate(R.layout.component_doctor_image_row, parent, false);
-        return new DoctorsAdapter.ViewHolder(view);
+    public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        View view;
+        if (viewType == VIEW_TYPE_EXPERT) {
+            view = LayoutInflater.from(activity).inflate(R.layout.component_expert_image_row, parent, false);
+            return new ImageViewHolder(view);
+//        } else if (viewType == VIEW_TYPE_DOCTOR) {
+        } else {
+            view = LayoutInflater.from(activity).inflate(R.layout.component_doctor_image_row, parent, false);
+            return new DetailViewHolder(view);
+        }
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        Glide.with(activity).load(doctors.get(position).getImgUrl()).into(holder.imgDoctor);
-        holder.txtDoctor.setText(doctors.get(position).getName());
+    public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
+        if (holder instanceof ImageViewHolder) {
+            ImageViewHolder imgViewHolder = (ImageViewHolder) holder;
+            Expert expert = expertList.get(position);
+            Glide.with(activity).load(getImageUrl(expert.getPicture())).into(imgViewHolder.imgDoctor);
+
+        } else if (holder instanceof DetailViewHolder) {
+            DetailViewHolder detailViewHolder = (DetailViewHolder) holder;
+            Doctor doctor = (Doctor) objectList.get(position);
+            if (doctor.getName() == null) {
+                detailViewHolder.txtDoctor.setText(R.string.add_new);
+                detailViewHolder.txtDoctor.setTextColor(ContextCompat.getColor(activity, R.color.text_color_secondary));
+                detailViewHolder.imgDoctor.setImageDrawable(ContextCompat.getDrawable(activity, R.drawable.add_btn));
+                detailViewHolder.imgDoctor.setPadding(50, 50, 50, 50);
+            } else {
+                detailViewHolder.txtDoctor.setTextColor(ContextCompat.getColor(activity, R.color.text_color_primary));
+                detailViewHolder.imgDoctor.setPadding(0, 0, 0, 0);
+                Glide.with(activity).load(doctor.getDoc_image()).into(detailViewHolder.imgDoctor);
+                detailViewHolder.txtDoctor.setText(doctor.getFull_name());
+            }
+        }
 
         final int pos = holder.getAdapterPosition();
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(listener != null)
-                    listener.onDoctorClick(doctors.get(pos));
+                if (listener != null) {
+                    if (objectList != null)
+                        listener.onDoctorClick(objectList.get(pos));
+                    else
+                        listener.onDoctorClick(expertList.get(pos));
+                }
             }
         });
     }
 
     @Override
     public int getItemCount() {
-        if (doctors == null)
+        if (expertList == null && objectList == null)
             return 0;
+        else if (expertList != null)
+            return expertList.size();
         else
-            return doctors.size();
+            return objectList.size();
     }
 
-    class ViewHolder extends RecyclerView.ViewHolder {
+    @Override
+    public int getItemViewType(int position) {
+        if (expertList == null)
+            return VIEW_TYPE_DOCTOR;
+        else
+            return VIEW_TYPE_EXPERT;
+    }
+
+    class DetailViewHolder extends RecyclerView.ViewHolder {
         CircleImageView imgDoctor;
         TextView txtDoctor;
 
-        ViewHolder(View itemView) {
+        DetailViewHolder(View itemView) {
             super(itemView);
             imgDoctor = itemView.findViewById(R.id.img_profile_doctor_row);
             txtDoctor = itemView.findViewById(R.id.txt_name_doctor_row);
         }
     }
 
+    class ImageViewHolder extends RecyclerView.ViewHolder {
+        CircleImageView imgDoctor;
+
+        ImageViewHolder(View itemView) {
+            super(itemView);
+            imgDoctor = itemView.findViewById(R.id.img_profile_expert_row);
+        }
+    }
+
     public interface OnDoctorClickListener {
-        void onDoctorClick(Doctor doctor);
+        void onDoctorClick(Object object);
+
+//        void onNewExpertFocused(Expert expert);
+    }
+
+    private String getImageUrl(String content) {
+        if (content.contains(AppConfig.DOCTOR_IMAGE_DEAFULT))
+            return AppConfig.AYUBO_BASIC_URL + content;
+        else if (!content.equals(""))
+            return AppConfig.AYUBO_BASIC_URL + AppConfig.DOCTOR_IMAGE_BASIC + content.substring(content.lastIndexOf("/"));
+        else
+            return "";
     }
 }

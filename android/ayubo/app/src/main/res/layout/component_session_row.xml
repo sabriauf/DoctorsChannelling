@@ -4,7 +4,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_margin="2dp">
+    android:layout_marginBottom="2dp"
+    android:layout_marginLeft="@dimen/button_horizontal_margins"
+    android:layout_marginRight="@dimen/button_horizontal_margins"
+    android:layout_marginTop="2dp">
 
     <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
@@ -19,7 +22,8 @@
             android:layout_marginTop="16dp"
             android:text="@string/dummy_week"
             android:textColor="@color/text_color_primary"
-            android:textSize="@dimen/text_tertiary_size"
+            android:textSize="@dimen/text_secondary_size"
+            android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -27,33 +31,28 @@
             android:id="@+id/txt_time_session"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="16dp"
+            android:layout_marginBottom="8dp"
             android:layout_marginStart="@dimen/title_horizontal_margins"
             android:text="@string/dummy_time"
-            android:textColor="@color/colorAccent"
-            android:textSize="@dimen/text_secondary_size"
-            android:textStyle="bold"
+            android:textColor="@color/text_color_quinary"
+            android:textSize="@dimen/text_tertiary_size"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/txt_date_session" />
 
-        <TextView
-            android:id="@+id/txt_book_session"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="8dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginTop="8dp"
-            android:background="@drawable/book_button_background"
-            android:gravity="center"
-            android:paddingLeft="@dimen/edittext_padding"
-            android:paddingRight="@dimen/edittext_padding"
-            android:text="@string/book"
-            android:textColor="@color/text_color_widget_primary"
-            android:textSize="@dimen/text_secondary_size"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+        <!--<TextView-->
+            <!--android:id="@+id/txt_price_session"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_marginBottom="16dp"-->
+            <!--android:layout_marginStart="@dimen/title_horizontal_margins"-->
+            <!--android:text="@string/dummy_price"-->
+            <!--android:textColor="@color/text_color_secondary"-->
+            <!--android:textSize="@dimen/text_quaternary_size"-->
+            <!--android:textStyle="bold"-->
+            <!--app:layout_constraintBottom_toBottomOf="parent"-->
+            <!--app:layout_constraintStart_toStartOf="parent"-->
+            <!--app:layout_constraintTop_toBottomOf="@+id/txt_time_session" />-->
 
         <TextView
             android:id="@+id/txt_number_session"
@@ -61,13 +60,14 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="8dp"
             android:layout_marginEnd="24dp"
+            android:layout_marginRight="24dp"
             android:layout_marginTop="8dp"
             android:text="@string/dummy_day"
-            android:textColor="@color/text_color_primary"
+            android:textColor="@color/text_color_secondary"
             android:textSize="@dimen/text_primary_size"
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/txt_book_session"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
 

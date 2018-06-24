@@ -7,140 +7,115 @@ import java.io.Serializable;
  */
 
 public class Session implements Serializable {
+    private String status;
+    private String day;
+    private String time;
+    private String month;
+    private String year;
+    private String show_date;
+    private int next_appointment_no;
+    private Info[] booking_info;
 
-    private int DocId;
-    private String DocName;
-    private String Date;
-    private int SessionID;
-    private String Time;
-    private int Blocked;
-    private String Specialisation;
-    private int MaxCounsultationCount;
-    private int CurrentAppNumber;
-    private String Hospital;
-    private int HospitalID;
-    private int SpecialiseID;
-    private double HospitalFee;
-    private double DoctorFee;
-    private double VATFee;
+    public class Info implements Serializable {
+        private String id;
+        private double amount_local;
+        private double amount_foreign;
+        private String from;
 
-    public int getDocId() {
-        return DocId;
+        public String getId() {
+            return id;
+        }
+
+        public void setId(String id) {
+            this.id = id;
+        }
+
+        public double getAmount_local() {
+            return amount_local;
+        }
+
+        public void setAmount_local(double amount_local) {
+            this.amount_local = amount_local;
+        }
+
+        public double getAmount_foreign() {
+            return amount_foreign;
+        }
+
+        public void setAmount_foreign(double amount_foreign) {
+            this.amount_foreign = amount_foreign;
+        }
+
+        public String getFrom() {
+            return from;
+        }
+
+        public void setFrom(String from) {
+            this.from = from;
+        }
     }
 
-    public void setDocId(int docId) {
-        DocId = docId;
+    public String getDay() {
+        return day;
     }
 
-    public String getDocName() {
-        return DocName;
-    }
-
-    public void setDocName(String docName) {
-        DocName = docName;
-    }
-
-    public String getDate() {
-        return Date;
-    }
-
-    public void setDate(String date) {
-        Date = date;
-    }
-
-    public int getSessionID() {
-        return SessionID;
-    }
-
-    public void setSessionID(int sessionID) {
-        SessionID = sessionID;
+    public void setDay(String day) {
+        this.day = day;
     }
 
     public String getTime() {
-        return Time;
+        return time;
     }
 
     public void setTime(String time) {
-        Time = time;
+        this.time = time;
     }
 
-    public int getBlocked() {
-        return Blocked;
+    public String getMonth() {
+        return month;
     }
 
-    public void setBlocked(int blocked) {
-        Blocked = blocked;
+    public void setMonth(String month) {
+        this.month = month;
     }
 
-    public String getSpecialisation() {
-        return Specialisation;
+    public String getYear() {
+        return year;
     }
 
-    public void setSpecialisation(String specialisation) {
-        Specialisation = specialisation;
+    public void setYear(String year) {
+        this.year = year;
     }
 
-    public int getMaxCounsultationCount() {
-        return MaxCounsultationCount;
+    public String getShow_date() {
+        return show_date;
     }
 
-    public void setMaxCounsultationCount(int maxCounsultationCount) {
-        MaxCounsultationCount = maxCounsultationCount;
+    public void setShow_date(String show_date) {
+        this.show_date = show_date;
     }
 
-    public int getCurrentAppNumber() {
-        return CurrentAppNumber;
+    public int getNext_appointment_no() {
+        return next_appointment_no;
     }
 
-    public void setCurrentAppNumber(int currentAppNumber) {
-        CurrentAppNumber = currentAppNumber;
+    public void setNext_appointment_no(int next_appointment_no) {
+        this.next_appointment_no = next_appointment_no;
     }
 
-    public String getHospital() {
-        return Hospital;
+    public Info[] getBooking_info() {
+        return booking_info;
     }
 
-    public void setHospital(String hospital) {
-        Hospital = hospital;
+    public void setBooking_info(Info[] booking_info) {
+        this.booking_info = booking_info;
     }
 
-    public int getHospitalID() {
-        return HospitalID;
+    public String getStatus() {
+        return status;
     }
 
-    public void setHospitalID(int hospitalID) {
-        HospitalID = hospitalID;
-    }
-
-    public int getSpecialiseID() {
-        return SpecialiseID;
-    }
-
-    public void setSpecialiseID(int specialiseID) {
-        SpecialiseID = specialiseID;
-    }
-
-    public double getHospitalFee() {
-        return HospitalFee;
-    }
-
-    public void setHospitalFee(double hospitalFee) {
-        HospitalFee = hospitalFee;
-    }
-
-    public double getDoctorFee() {
-        return DoctorFee;
-    }
-
-    public void setDoctorFee(double doctorFee) {
-        DoctorFee = doctorFee;
-    }
-
-    public double getVATFee() {
-        return VATFee;
-    }
-
-    public void setVATFee(double VATFee) {
-        this.VATFee = VATFee;
+    public void setStatus(String status) {
+        this.status = status;
     }
 }

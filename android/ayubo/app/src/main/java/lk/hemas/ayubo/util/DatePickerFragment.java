@@ -18,24 +18,36 @@ public class DatePickerFragment extends DialogFragment
         implements DatePickerDialog.OnDateSetListener {
 
     private OnDateSelected onDateSelected;
+    private Calendar minDate;
+    private Calendar defaultDate;
 
     public void setOnDateSelectedListener(OnDateSelected onDateSelected) {
         this.onDateSelected = onDateSelected;
     }
 
+    public void setMinDate(Calendar minDate) {
+        this.minDate = minDate;
+    }
+
+    public void setDefaultDate(Calendar defaultDate) {
+        this.defaultDate = defaultDate;
+    }
+
     @NonNull
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
-        final Calendar c = Calendar.getInstance();
-        int year = c.get(Calendar.YEAR);
-        int month = c.get(Calendar.MONTH);
-        int day = c.get(Calendar.DAY_OF_MONTH);
+        if(defaultDate == null)
+            defaultDate = Calendar.getInstance();
+        int year = defaultDate.get(Calendar.YEAR);
+        int month = defaultDate.get(Calendar.MONTH);
+        int day = defaultDate.get(Calendar.DAY_OF_MONTH);
 
         Context context = getContext();
 
         if (context != null) {
             DatePickerDialog datePickerDialog = new DatePickerDialog(context, this, year, month, day);
-            datePickerDialog.getDatePicker().setMinDate(Calendar.getInstance().getTimeInMillis());
+            if (minDate != null)
+                datePickerDialog.getDatePicker().setMinDate(minDate.getTimeInMillis());
             return datePickerDialog;
         } else
             return null;
@@ -44,7 +56,7 @@ public class DatePickerFragment extends DialogFragment
     public void onDateSet(DatePicker view, int year, int month, int day) {
         Calendar c = Calendar.getInstance();
         c.set(Calendar.YEAR, year);
-        c.set(Calendar.MONTH, month + 1);
+        c.set(Calendar.MONTH, month);
         c.set(Calendar.DAY_OF_MONTH, day);
 
         if (onDateSelected != null)

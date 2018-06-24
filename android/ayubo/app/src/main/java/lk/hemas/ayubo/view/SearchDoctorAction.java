@@ -16,6 +16,7 @@ import java.util.List;
 
 import lk.hemas.ayubo.R;
 import lk.hemas.ayubo.activity.SearchActivity;
+import lk.hemas.ayubo.adapter.SearchAdapter;
 import lk.hemas.ayubo.config.AppConfig;
 import lk.hemas.ayubo.model.AyuboSearchParameters;
 import lk.hemas.ayubo.model.DownloadDataBuilder;
@@ -43,16 +44,18 @@ public class SearchDoctorAction implements SearchActivity.SearchActions, Seriali
     @Override
     public boolean isValueConsists(Object object, String value) {
         VisitDoctor doctor = (VisitDoctor) object;
-        return doctor.getDoctorName().toLowerCase().contains(value.toLowerCase());
+        return doctor.getName().toLowerCase().contains(value.toLowerCase());
     }
 
     @Override
     public boolean onFinish(Activity activity, Object object) {
         Intent result = new Intent();
-        result.putExtra(SearchActivity.EXTRA_SEARCH_VALUE, ((VisitDoctor) object).getDoctorName());
-        result.putExtra(SearchActivity.EXTRA_SEARCH_ID, ((VisitDoctor) object).getDocID());
-        result.putExtra(SearchActivity.EXTRA_RESULT_OBJECT, (VisitDoctor) object);
-        activity.setResult(Activity.RESULT_OK, result);
+        if (object != null) {
+            result.putExtra(SearchActivity.EXTRA_SEARCH_VALUE, ((VisitDoctor) object).getName());
+            result.putExtra(SearchActivity.EXTRA_SEARCH_ID, ((VisitDoctor) object).getId());
+            result.putExtra(SearchActivity.EXTRA_RESULT_OBJECT, (VisitDoctor) object);
+            activity.setResult(Activity.RESULT_OK, result);
+        }
         activity.finish();
         return true;
     }
@@ -72,12 +75,17 @@ public class SearchDoctorAction implements SearchActivity.SearchActions, Seriali
 
     @Override
     public String getName(Object object) {
-        return ((VisitDoctor) object).getDoctorName();
+        return ((VisitDoctor) object).getName();
     }
 
     @Override
     public String getValue(Object object) {
-        return ((VisitDoctor) object).getSpecialisation();
+        return "";
+    }
+
+    @Override
+    public String getImageUrl(Object object) {
+        return "";
     }
 
     @Override
@@ -85,5 +93,10 @@ public class SearchDoctorAction implements SearchActivity.SearchActions, Seriali
         return new DownloadDataBuilder().init(AppConfig.URL_AYUBO_SOAP_REQUEST, 0, DownloadManager.POST_REQUEST).
                 setParams(AppHandler.getSoapRequestParams(AppConfig.METHOD_SOAP_DOCTORS_SEARCH, params.getSearchParams())).
                 setType(AppConfig.SERVER_REQUEST_CONTENT_TYPE).setTimeout(AppConfig.SERVER_REQUEST_TIMEOUT);
+    }
+
+    @Override
+    public int getViewType() {
+        return SearchAdapter.SINGLE_TYPE;
     }
 }

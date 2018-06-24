@@ -8,67 +8,49 @@ import java.io.Serializable;
 
 public class VisitDoctor implements Serializable{
 
-    private int DocID;
-    private String DocCode;
-    private String DoctorName;
-    private int SpecialiseId;
-    private String Specialisation;
-    private int HospitalId;
-    private String HospitalName;
+    private int id;
+    private String name;
+    private String echannelling;
+    private String doc990;
+    private String hemas;
 
-    public int getDocID() {
-        return DocID;
+    public int getId() {
+        return id;
     }
 
-    public void setDocID(int docID) {
-        DocID = docID;
+    public void setId(int id) {
+        this.id = id;
     }
 
-    public String getDocCode() {
-        return DocCode;
+    public String getName() {
+        return name;
     }
 
-    public void setDocCode(String docCode) {
-        DocCode = docCode;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public String getDoctorName() {
-        return DoctorName;
+    public String getEchannelling() {
+        return echannelling;
     }
 
-    public void setDoctorName(String doctorName) {
-        DoctorName = doctorName;
+    public void setEchannelling(String echannelling) {
+        this.echannelling = echannelling;
     }
 
-    public int getSpecialiseId() {
-        return SpecialiseId;
+    public String getDoc990() {
+        return doc990;
     }
 
-    public void setSpecialiseId(int specialiseId) {
-        SpecialiseId = specialiseId;
+    public void setDoc990(String doc990) {
+        this.doc990 = doc990;
     }
 
-    public String getSpecialisation() {
-        return Specialisation;
+    public String getHemas() {
+        return hemas;
     }
 
-    public void setSpecialisation(String specialisation) {
-        Specialisation = specialisation;
-    }
-
-    public int getHospitalId() {
-        return HospitalId;
-    }
-
-    public void setHospitalId(int hospitalId) {
-        HospitalId = hospitalId;
-    }
-
-    public String getHospitalName() {
-        return HospitalName;
-    }
-
-    public void setHospitalName(String hospitalName) {
-        HospitalName = hospitalName;
+    public void setHemas(String hemas) {
+        this.hemas = hemas;
     }
 }

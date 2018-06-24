@@ -9,13 +9,13 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.Calendar;
 
 import lk.hemas.ayubo.R;
 import lk.hemas.ayubo.model.AyuboSearchParameters;
 import lk.hemas.ayubo.model.DocSearchParameters;
-import lk.hemas.ayubo.model.DocSessionParameters;
 import lk.hemas.ayubo.util.DatePickerFragment;
 import lk.hemas.ayubo.view.SearchDoctorAction;
 import lk.hemas.ayubo.view.SearchLocationAction;
@@ -98,6 +98,7 @@ public class VisitDoctorActivity extends AppCompatActivity {
             public void onClick(View view) {
                 DatePickerFragment newFragment = new DatePickerFragment();
                 newFragment.show(getSupportFragmentManager(), getString(R.string.appointment_date));
+                newFragment.setMinDate(Calendar.getInstance());
                 newFragment.setOnDateSelectedListener(new DatePickerFragment.OnDateSelected() {
                     @Override
                     public void onSelected(Calendar calendar) {
@@ -112,10 +113,10 @@ public class VisitDoctorActivity extends AppCompatActivity {
     }
 
     private void setDetails() {
-        setDoctor("");
-        setSpecialty("");
-        setLocation("");
-        setDate();
+        setDoctor(getString(R.string.search_doctor_expert));
+        setSpecialty(getString(R.string.any));
+        setLocation(getString(R.string.any));
+        setDate(getString(R.string.any));
 //        if (searchParam == null)
 //            searchParam = new AyuboSearchParameters();
 //        searchParam.setDate(TimeFormatter.millisecondsToString(Calendar.getInstance().getTimeInMillis(),
@@ -123,19 +124,19 @@ public class VisitDoctorActivity extends AppCompatActivity {
     }
 
     protected void setDoctor(String name) {
-        setButton(view_doctor, getString(R.string.doctor), name, R.drawable.ic_stethoscope);
+        setButton(view_doctor, getString(R.string.visit_a_doctor_two), name, R.drawable.search_doctor);
     }
 
     protected void setSpecialty(String specialty) {
-        setButton(view_specialty, getString(R.string.specialty), specialty, R.drawable.ic_specialty);
+        setButton(view_specialty, getString(R.string.specialty), specialty, R.drawable.search_speciality);
     }
 
     protected void setLocation(String location) {
-        setButton(view_location, getString(R.string.location), location, R.drawable.ic_location);
+        setButton(view_location, getString(R.string.location), location, R.drawable.search_location);
     }
 
-    private void setDate() {
-        setButton(view_date, getString(R.string.date), "", R.drawable.ic_date);
+    private void setDate(String message) {
+        setButton(view_date, getString(R.string.date), message, R.drawable.search_date);
     }
 
     private void setButton(View view, String name, String subName, int drawable) {
@@ -145,7 +146,7 @@ public class VisitDoctorActivity extends AppCompatActivity {
     }
 
     private static String getTime(Calendar calendar) {
-        return TimeFormatter.millisecondsToString(calendar.getTimeInMillis(), TimeFormatter.TIME_FORMAT_APPOINTMENT_DATE);
+        return TimeFormatter.millisecondsToString(calendar.getTimeInMillis(), TimeFormatter.DATE_FORMAT_VIDEO);
     }
 
     @Override
@@ -186,54 +187,65 @@ public class VisitDoctorActivity extends AppCompatActivity {
 
         switch (searchCode) {
             case SEARCH_DOCTOR:
+                searchParam.setDoc_id("");
                 intent.putExtra(SearchActivity.EXTRA_SEARCH_OBJECT, new SearchDoctorAction(searchParam));
                 break;
             case SEARCH_HOSPITAL:
+                searchParam.setHospital_id("");
                 intent.putExtra(SearchActivity.EXTRA_SEARCH_OBJECT, new SearchLocationAction(searchParam));
                 break;
             case VisitDoctorActivity.SEARCH_SPECIALTY:
+                searchParam.setSpecialization_id("");
                 intent.putExtra(SearchActivity.EXTRA_SEARCH_OBJECT, new SearchSpecialtyAction(searchParam));
                 break;
         }
         startActivityForResult(intent, searchCode);
     }
 
-    private boolean validate() {
-        return searchParam != null && !searchParam.getDoc_id().equals("");
-    }
+//    private boolean validate() {
+//        return searchParam != null && !searchParam.getDoc_id().equals("");
+//    }
 
     private void checkAvailability() {
 
-        final DocSearchParameters parameters = new DocSearchParameters();
-//        parameters.setDate(((TextView) view_date.findViewById(R.id.txt_sub_name_button)).getText().toString());
-        parameters.setDocName(((TextView) view_doctor.findViewById(R.id.txt_sub_name_button)).getText().toString());
-        parameters.setDate("04-12-2017");//TODO - hard coded values
-//        parameters.setDocName("sunil");
-        parameters.setHospitalId(searchParam != null ? searchParam.getHospital_id() : "");
-        parameters.setSpecialty(((TextView) view_specialty.findViewById(R.id.txt_sub_name_button)).getText().toString());
+        if (searchParam != null && (!searchParam.getDoc_id().equals("") || !searchParam.getHospital_id().equals("") ||
+                !searchParam.getSpecialization_id().equals(""))) {
 
+            final DocSearchParameters parameters = new DocSearchParameters();
+            parameters.setDoctorId(searchParam != null ? searchParam.getDoc_id() : "");
+            parameters.setLocationId(searchParam != null ? searchParam.getHospital_id() : "");
+            parameters.setSpecializationId(searchParam != null ? searchParam.getSpecialization_id() : "");
 
-        startDoctorsActivity(parameters);
+            String date = ((TextView) view_date.findViewById(R.id.txt_sub_name_button)).getText().toString();
+            if (date.equals(getString(R.string.any)))
+//            parameters.setDate(TimeFormatter.millisecondsToString(System.currentTimeMillis(), TimeFormatter.DATE_FORMAT_VIDEO));
+                parameters.setDate("");
+            else
+                parameters.setDate(date);
+
+            startDoctorsActivity(parameters);
+        } else
+            Toast.makeText(this, R.string.no_search_criteria, Toast.LENGTH_LONG).show();
     }
 
     private void startDoctorsActivity(DocSearchParameters params) {
-        if (validate()) {
-            DocSessionParameters docSessionParameters = new DocSessionParameters();
-            docSessionParameters.setDocId(searchParam.getDoc_id());
-            docSessionParameters.setFromDate(TimeFormatter.millisecondsToString(Calendar.getInstance().getTimeInMillis(),
-                    TimeFormatter.DATE_FORMAT_SHORT));
-            docSessionParameters.setToDate(((TextView) view_date.findViewById(R.id.txt_sub_name_button)).getText().toString());
-
-            Intent intent = new Intent(this, DoctorActivity.class);
-            intent.putExtra(DoctorActivity.EXTRA_APPOINTMENTS, docSessionParameters);
-            startActivity(intent);
-        } else {
-            Intent intent = new Intent(VisitDoctorActivity.this, SearchActivity.class);
-            intent.putExtra(SearchActivity.EXTRA_SEARCH_OBJECT, new SelectDoctorAction(params));
-            intent.putExtra(SearchActivity.EXTRA_TO_DATE, ((TextView) view_date.findViewById(R.id.txt_sub_name_button))
-                    .getText().toString());
-            startActivity(intent);
-        }
+//        if (validate()) {
+//            DocSessionParameters docSessionParameters = new DocSessionParameters();
+//            docSessionParameters.setDocId(searchParam.getDoc_id());
+//            docSessionParameters.setFromDate(TimeFormatter.millisecondsToString(Calendar.getInstance().getTimeInMillis(),
+//                    TimeFormatter.DATE_FORMAT_SHORT));
+//            docSessionParameters.setToDate(((TextView) view_date.findViewById(R.id.txt_sub_name_button)).getText().toString());
+//
+//            Intent intent = new Intent(this, DoctorActivity.class);
+//            intent.putExtra(DoctorActivity.EXTRA_APPOINTMENTS, docSessionParameters);
+//            startActivity(intent);
+//        } else {
+        Intent intent = new Intent(VisitDoctorActivity.this, SearchActivity.class);
+        intent.putExtra(SearchActivity.EXTRA_SEARCH_OBJECT, new SelectDoctorAction(params));
+        intent.putExtra(SearchActivity.EXTRA_TO_DATE, ((TextView) view_date.findViewById(R.id.txt_sub_name_button))
+                .getText().toString());
+        startActivity(intent);
+//        }
         finish();
     }
 }
